@@ -8,7 +8,7 @@ import cool from '../../assets/images/cool.png'
 import comfortable from '../../assets/images/comfortable.png'
 import warm from '../../assets/images/warm.png'
 import hot from '../../assets/images/hot.png'
-
+// import { Md3DRotation } from 'react-icons/md'
 
 const Main = () => {
 	const [weatherData, setWeatherData] = useState(null)
@@ -53,6 +53,45 @@ const Main = () => {
 				}
 			})
 	}
+	const weatherDescriptionCards = [
+		{
+			id: 1,
+			icon: null,
+			title: 'Город: ',
+			data: weatherData.name,
+		},
+		{
+			id: 2,
+			icon: null,
+			title: 'Температура: ',
+			data: Math.round(weatherData.main.temp) + '°',
+		},
+		{
+			id: 3,
+			icon: null,
+			title: 'Ветер: ',
+			data: weatherData.wind.speed + 'м/с',
+		},
+		{
+			id: 4,
+			icon: null,
+			title: 'Облака: ',
+			data: weatherData.weather[0].description,
+		},
+		{
+			id: 5,
+			icon: null,
+			title: 'asssf',
+			data: `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`,
+		},
+		{
+			id: 6,
+			icon: null,
+			title: '33rr',
+			data: bg,
+		},
+	]
+
 	return (
 		<>
 			<div className='container'>
@@ -65,17 +104,18 @@ const Main = () => {
 
 				{weatherData ? (
 					<>
-						<p>Город: {weatherData.name}</p>
-						<p>Температура: {Math.round(weatherData.main.temp)}°</p>
-						<p>Ветер: {weatherData.wind.speed} м/с</p>
-						<p>Облака: {weatherData.weather[0].description}</p>
-						<p>
-							<img
-								className='weather-icon'
-								src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-								alt=''
-							/>
-						</p>
+						<div className='section section__description'>
+							{weatherDescriptionCards.map((card) => {
+								return (
+									<div className='card'>
+										<div className='descripton__card-icon'>
+											{card.icon}
+											<span>{card.title}</span>
+										</div>
+									</div>
+								)
+							})}
+						</div>
 					</>
 				) : null}
 				<img className='temperature-icon' src={bg} alt='' />
