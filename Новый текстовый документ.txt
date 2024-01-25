@@ -1,0 +1,8 @@
+https://openweathermap.org/
+https://openweathermap.org/current
+
+https://api.openweathermap.org/data/2.5/weather?q=bishkek&appid=e68ba6e8f834a6a1e85ad6d0c562a2f5
+
+Proto123
+12345678
+e68ba6e8f834a6a1e85ad6d0c562a2f5

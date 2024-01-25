@@ -1,0 +1,27 @@
+body{
+    background: #eeeeee;
+}
+.container {
+    background: #fff;
+	max-width: 500px;
+	padding: 20px;
+	border-radius: 7px;
+	border: 1px solid #dadada;
+	-webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+}
+img {
+    border-radius: 10px;
+    background: #1a3e3e26;
+	width: 100%;
+	height: auto;
+}
+.weather-icon {
+	max-width: 70px;
+	max-height: auto;
+}
+.temperature-icon {
+	max-width: 110px;
+	// max-height: auto;
+}
