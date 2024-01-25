@@ -1,3 +1,5 @@
+demo: https://mushketov.github.io/open-weather/
+
 ### `npm start`
 
 ### react-icons
