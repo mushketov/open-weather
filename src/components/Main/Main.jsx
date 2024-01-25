@@ -31,7 +31,7 @@ const Main = () => {
 			setBg(freezing)
 		}
 	}
-	const handleClick = (event) => {
+	const submitForm = (event) => {
 		event.preventDefault()
 		const city = event.target[0].value
 		//todo: ключ перекинуть в dotenv
@@ -96,7 +96,7 @@ const Main = () => {
 		<>
 			<div className='container'>
 				<h2>Прогноз погоды</h2>
-				<form onSubmit={handleClick}>
+				<form onSubmit={submitForm}>
 					<input type='text' placeholder='Название города' name='' id='' />
 					<button type='submit'>enter</button>
 				</form>
