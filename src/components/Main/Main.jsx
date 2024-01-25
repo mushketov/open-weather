@@ -9,6 +9,9 @@ import comfortable from '../../assets/images/comfortable.png'
 import warm from '../../assets/images/warm.png'
 import hot from '../../assets/images/hot.png'
 // import { Md3DRotation } from 'react-icons/md'
+import { LiaCloudSolid } from 'react-icons/lia'
+import { TbWind } from 'react-icons/tb'
+import { LiaTemperatureLowSolid } from 'react-icons/lia'
 
 const Main = () => {
 	const [weatherData, setWeatherData] = useState(null)
@@ -56,42 +59,28 @@ const Main = () => {
 	const weatherDescriptionCards = [
 		{
 			id: 1,
-			icon: null,
-			title: 'Город: ',
-			data: weatherData.name,
+			title: 'Город:',
+			data: weatherData?.name,
 		},
 		{
 			id: 2,
-			icon: null,
-			title: 'Температура: ',
-			data: Math.round(weatherData.main.temp) + '°',
+			icon: <LiaTemperatureLowSolid />,
+			title: 'Температура:',
+			data: Math.round(weatherData?.main.temp) + '°',
 		},
 		{
 			id: 3,
-			icon: null,
-			title: 'Ветер: ',
-			data: weatherData.wind.speed + 'м/с',
+			icon: <TbWind />,
+			title: 'Ветер:',
+			data: weatherData?.wind.speed + ' м/с',
 		},
 		{
 			id: 4,
-			icon: null,
-			title: 'Облака: ',
-			data: weatherData.weather[0].description,
-		},
-		{
-			id: 5,
-			icon: null,
-			title: 'asssf',
-			data: `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`,
-		},
-		{
-			id: 6,
-			icon: null,
-			title: '33rr',
-			data: bg,
+			title: 'Облака:',
+			icon: <LiaCloudSolid />,
+			data: weatherData?.weather[0].description,
 		},
 	]
-
 	return (
 		<>
 			<div className='container'>
@@ -100,25 +89,24 @@ const Main = () => {
 					<input type='text' placeholder='Название города' name='' id='' />
 					<button type='submit'>enter</button>
 				</form>
-				{/* выводим данные в разметку */}
-
 				{weatherData ? (
 					<>
 						<div className='section section__description'>
 							{weatherDescriptionCards.map((card) => {
 								return (
-									<div className='card'>
+									<div className='card' key={card.id}>
 										<div className='descripton__card-icon'>
 											{card.icon}
 											<span>{card.title}</span>
 										</div>
+										<h2>{card.data}</h2>
 									</div>
 								)
 							})}
+							<img className='temperature-icon' src={bg} alt='' />
 						</div>
 					</>
 				) : null}
-				<img className='temperature-icon' src={bg} alt='' />
 			</div>
 			{/* уведомления */}
 			<ToastContainer
