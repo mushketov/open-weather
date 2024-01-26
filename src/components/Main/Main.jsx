@@ -8,7 +8,10 @@ import cool from '../../assets/images/cool.png'
 import comfortable from '../../assets/images/comfortable.png'
 import warm from '../../assets/images/warm.png'
 import hot from '../../assets/images/hot.png'
-
+// import { Md3DRotation } from 'react-icons/md'
+import { LiaCloudSolid } from 'react-icons/lia'
+import { TbWind } from 'react-icons/tb'
+import { LiaTemperatureLowSolid } from 'react-icons/lia'
 
 const Main = () => {
 	const [weatherData, setWeatherData] = useState(null)
@@ -31,7 +34,7 @@ const Main = () => {
 			setBg(freezing)
 		}
 	}
-	const handleClick = (event) => {
+	const submitForm = (event) => {
 		event.preventDefault()
 		const city = event.target[0].value
 		//todo: ключ перекинуть в dotenv
@@ -53,32 +56,57 @@ const Main = () => {
 				}
 			})
 	}
+	const weatherDescriptionCards = [
+		{
+			id: 1,
+			title: 'Город:',
+			data: weatherData?.name,
+		},
+		{
+			id: 2,
+			icon: <LiaTemperatureLowSolid />,
+			title: 'Температура:',
+			data: Math.round(weatherData?.main.temp) + '°',
+		},
+		{
+			id: 3,
+			icon: <TbWind />,
+			title: 'Ветер:',
+			data: weatherData?.wind.speed + ' м/с',
+		},
+		{
+			id: 4,
+			title: 'Облака:',
+			icon: <LiaCloudSolid />,
+			data: weatherData?.weather[0].description,
+		},
+	]
 	return (
 		<>
 			<div className='container'>
 				<h2>Прогноз погоды</h2>
-				<form onSubmit={handleClick}>
+				<form onSubmit={submitForm}>
 					<input type='text' placeholder='Название города' name='' id='' />
 					<button type='submit'>enter</button>
 				</form>
-				{/* выводим данные в разметку */}
-
 				{weatherData ? (
 					<>
-						<p>Город: {weatherData.name}</p>
-						<p>Температура: {Math.round(weatherData.main.temp)}°</p>
-						<p>Ветер: {weatherData.wind.speed} м/с</p>
-						<p>Облака: {weatherData.weather[0].description}</p>
-						<p>
-							<img
-								className='weather-icon'
-								src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-								alt=''
-							/>
-						</p>
+						<div className='section section__description'>
+							{weatherDescriptionCards.map((card) => {
+								return (
+									<div className='card' key={card.id}>
+										<div className='descripton__card-icon'>
+											{card.icon}
+											<span>{card.title}</span>
+										</div>
+										<h2>{card.data}</h2>
+									</div>
+								)
+							})}
+							<img className='temperature-icon' src={bg} alt='' />
+						</div>
 					</>
 				) : null}
-				<img className='temperature-icon' src={bg} alt='' />
 			</div>
 			{/* уведомления */}
 			<ToastContainer
