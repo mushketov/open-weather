@@ -31,7 +31,7 @@ const Main = () => {
 		} else if (temperature >= 7) {
 			setBg(veryCold)
 		} else if (temperature <= 0 || temperature >= 0) {
-			setBg(freezing)
+			setBg(freezing) 
 		}
 	}
 	const submitForm = (event) => {
