@@ -84,7 +84,7 @@ const Main = () => {
 	return (
 		<>
 			<div className='container'>
-				<h2>Прогноз погоды</h2>
+				<h2 className='app-title'>Прогноз погоды</h2>
 				<form onSubmit={submitForm}>
 					<input type='text' placeholder='Название города' name='' id='' />
 					<button type='submit'>enter</button>
